@@ -145,6 +145,7 @@ WHERE cast ILIKE '%Salman Khan%'
   AND release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10;
 ```
 #### 13. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in India
+```sql
 SELECT 
     UNNEST(string_to_array(COALESCE(cast, ''), ',')) AS actor, 
     COUNT(*) AS movie_count 
@@ -153,6 +154,7 @@ WHERE country = 'India'
 GROUP BY actor 
 ORDER BY movie_count DESC 
 LIMIT 10;
+```
 #### 14. Categorize Content Based on the Presence of 'Kill' and 'Violence' Keywords
 ```sql
 SELECT 
