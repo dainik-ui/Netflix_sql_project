@@ -50,7 +50,7 @@ CREATE TABLE netflix
 
 ## Business Problems and Solutions
 
-###1. Count the Number of Movies vs TV Shows
+### 1. Count the Number of Movies vs TV Shows
 ```sql
 SELECT 
     type, 
@@ -58,7 +58,7 @@ SELECT
 FROM netflix 
 GROUP BY type;
 ```
-###2. Find the Most Common Rating for Movies and TV Shows
+### 2. Find the Most Common Rating for Movies and TV Shows
 ```sql
 SELECT 
     type, 
@@ -70,18 +70,12 @@ HAVING NOT (type = 'Movie' AND rating = 'TV-MA')
 ORDER BY most_common DESC 
 LIMIT 2;
 ```
-
-3. List All Movies Released in a Specific Year (e.g., 2020)
+### 3. List All Movies Released in a Specific Year (e.g., 2020)
 
 SELECT * 
 FROM netflix 
 WHERE release_year = 2020 AND type = 'Movie';
-
-
----
-
-4. Find the Top 5 Countries with the Most Content on Netflix
-
+#### 4. Find the Top 5 Countries with the Most Content on Netflix
 SELECT 
     UNNEST(string_to_array(COALESCE(country, ''), ',')) AS country_new, 
     COUNT(show_id) AS content_count 
@@ -89,12 +83,7 @@ FROM netflix
 GROUP BY country_new 
 ORDER BY content_count DESC 
 LIMIT 5;
-
-
----
-
-5. Identify the Longest Movie
-
+### 5. Identify the Longest Movie
 SELECT * 
 FROM netflix 
 WHERE type = 'Movie' 
@@ -103,39 +92,20 @@ WHERE type = 'Movie'
       FROM netflix 
       WHERE type = 'Movie' AND duration ~ '^[0-9]+ min$'
   );
-
-
----
-
-6. Find Content Added in the Last 5 Years
-
+#### 6. Find Content Added in the Last 5 Years
 SELECT * 
 FROM netflix 
 WHERE TO_DATE(TRIM(date_added), 'Month dd, yyyy') >= NOW() - INTERVAL '5 years';
-
-
----
-
-7. Find All Movies/TV Shows by Director 'Rajiv Chilaka'
-
+#### 7. Find All Movies/TV Shows by Director 'Rajiv Chilaka'
 SELECT * 
 FROM netflix 
 WHERE director ILIKE '%Rajiv Chilaka%';
-
-
----
-
-8. List All TV Shows with More Than 5 Seasons
-
+#### 8. List All TV Shows with More Than 5 Seasons
 SELECT * 
 FROM netflix 
 WHERE type = 'TV Show' 
   AND CAST(SPLIT_PART(duration, ' ', 1) AS INTEGER) > 5;
-
-
----
-
-9. Count the Number of Content Items in Each Genre
+#### 9. Count the Number of Content Items in Each Genre
 
 SELECT 
     UNNEST(string_to_array(COALESCE(listed_in, ''), ',')) AS genre, 
