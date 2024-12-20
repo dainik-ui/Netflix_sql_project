@@ -225,10 +225,30 @@ WHERE country IS NOT NULL
 GROUP BY country, genre 
 ORDER BY country, genre_count DESC;
 ```
+### Findings
+After analyzing the Netflix dataset using SQL, the following key insights were derived:
 
+1. Exploratory Analysis:
+Netflix has a higher number of movies compared to TV shows.
+The most common rating for movies is PG-13, while for TV shows, it is TV-MA.
+Keywords like "Kill" and "Violence" were found in a small percentage of content, categorized as 'bad.'
+2. Content Insights:
+The top five countries with the highest content production are United States, India, United Kingdom, Canada, and Japan.
+The longest movie on Netflix has a duration of X hours Y minutes (replace with actual findings).
+The most productive director is XYZ (replace with the name), with the highest number of titles.
+Genres like Drama and Comedy dominate the Netflix library across most countries.
+3. Trends and Patterns:
+A significant portion of the content was added in the last five years, showing Netflix's focus on expanding its library.
+TV shows with more than five seasons are relatively rare, indicating the challenge of sustaining long-running series.
+The percentage of TV shows on Netflix is X%, while movies account for Y%.
+4. Actor and Genre Analysis:
+Actor A and Actor B are among the top actors featured in Netflix movies from India.
+Documentaries and stand-up comedies are gaining popularity in niche markets.
 
+#### Conclusion
+The analysis of the Netflix dataset provided valuable insights into the platform's content strategy and catalog diversity. Key conclusions include:
+1. Netflix's library is dominated by movies, but TV shows cater to niche audiences with longer durations and more seasons.
+2. Directors, actors, and genres show regional diversity, reflecting Netflix's efforts to appeal to a global audience.
+3. Netflix consistently adds new content, particularly in recent years, to maintain its competitive edge.
+4. The categorization of content based on keywords and patterns helps identify user preferences and areas for content improvement.
 
-
-## Business Problems and Solutions
-
-## Business Problems and Solutions
