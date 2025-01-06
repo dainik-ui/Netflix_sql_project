@@ -112,7 +112,7 @@ WHERE type = 'TV Show'
 #### 9. Count the Number of Content Items in Each Genre
 ```sql
 SELECT 
-    UNNEST(string_to_array(COALESCE(listed_in, ''), ',')) AS genre, 
+    UNNEST(string_to_array(listed_in,',') AS genre, 
     COUNT(*) AS count 
 FROM netflix 
 GROUP BY genre 
