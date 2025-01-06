@@ -107,7 +107,7 @@ WHERE director ILIKE '%Rajiv Chilaka%';
 SELECT * 
 FROM netflix 
 WHERE type = 'TV Show' 
-  AND CAST(SPLIT_PART(duration, ' ', 1) AS INTEGER) > 5;
+  AND SPLIT_PART(duration, ' ', 1)::integer > 5;
 ```
 #### 9. Count the Number of Content Items in Each Genre
 ```sql
