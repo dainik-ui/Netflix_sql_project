@@ -60,15 +60,13 @@ GROUP BY type;
 ```
 ### 2. Find the Most Common Rating for Movies and TV Shows
 ```sql
-SELECT 
-    type, 
-    rating, 
-    COUNT(*) AS most_common 
-FROM netflix 
-GROUP BY type, rating 
-HAVING NOT (type = 'Movie' AND rating = 'TV-MA') 
-ORDER BY most_common DESC 
-LIMIT 2;
+with my as(
+select type,rating,count(*) as df, 
+row_number() over(partition by type  order by count(*) desc ) as fg
+from netflix
+group by type,rating) 
+select * from my
+where fg =1
 ```
 ### 3. List All Movies Released in a Specific Year (e.g., 2020)
 ```sql
