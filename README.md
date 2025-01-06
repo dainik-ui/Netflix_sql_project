@@ -164,18 +164,8 @@ FROM (
 GROUP BY category 
 ORDER BY content_count DESC;
 ```
-#### 15. Identify the Average Duration of Movies and TV Shows by Genre
-```
-SELECT 
-    UNNEST(string_to_array(COALESCE(listed_in, ''), ',')) AS genre, 
-    type, 
-    AVG(CAST(SPLIT_PART(duration, ' ', 1) AS INTEGER)) AS avg_duration 
-FROM netflix 
-WHERE duration IS NOT NULL 
-GROUP BY genre, type 
-ORDER BY avg_duration DESC;
-```
-#### 16. Find the Top 5 Most Productive Directors
+
+#### 15. Find the Top 5 Most Productive Directors
 ```sql
 SELECT 
     director, 
@@ -186,30 +176,14 @@ GROUP BY director
 ORDER BY content_count DESC 
 LIMIT 5;
 ```
-#### 17. Find the Month with the Most Content Added
-```sql
-SELECT 
-    TO_CHAR(TO_DATE(TRIM(date_added), 'Month dd, yyyy'), 'Month') AS month, 
-    COUNT(*) AS content_count 
-FROM netflix 
-WHERE date_added IS NOT NULL 
-GROUP BY month 
-ORDER BY content_count DESC 
-LIMIT 1;
-```
-#### 18. Calculate the Percentage of Content That is TV Shows
-```sql
-SELECT 
-    ROUND((COUNT(CASE WHEN type = 'TV Show' THEN 1 END) * 100.0) / COUNT(*), 2) AS tv_show_percentage 
-FROM netflix;
-```
-### 19. Identify the Oldest Movies or TV Shows Still Available
+
+### 16. Identify the Oldest Movies or TV Shows Still Available
 ```sql
 SELECT * 
 FROM netflix 
 WHERE release_year = (SELECT MIN(release_year) FROM netflix);
 ```
-#### 20. Find the Most Common Genre by Country
+#### 17. Find the Most Common Genre by Country
 ```sql
 SELECT 
     country, 
