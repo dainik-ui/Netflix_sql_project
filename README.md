@@ -140,7 +140,7 @@ WHERE cast ILIKE '%Salman Khan%'
 #### 13. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in India
 ```sql
 SELECT 
-    UNNEST(string_to_array(COALESCE(cast, ''), ',')) AS actor, 
+    UNNEST(string_to_array(cast,',')) AS actor, 
     COUNT(*) AS movie_count 
 FROM netflix 
 WHERE country = 'India' 
