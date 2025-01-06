@@ -213,7 +213,7 @@ WHERE release_year = (SELECT MIN(release_year) FROM netflix);
 ```sql
 SELECT 
     country, 
-    UNNEST(string_to_array(COALESCE(listed_in, ''), ',')) AS genre, 
+    UNNEST(string_to_array(listed_in,',')) AS genre, 
     COUNT(*) AS genre_count 
 FROM netflix 
 WHERE country IS NOT NULL 
