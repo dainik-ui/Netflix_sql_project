@@ -86,14 +86,8 @@ LIMIT 5;
 ```
 ### 5. Identify the Longest Movie
 ```sql
-SELECT * 
-FROM netflix 
-WHERE type = 'Movie' 
-  AND CAST(SPLIT_PART(duration, ' ', 1) AS INTEGER) = (
-      SELECT MAX(CAST(SPLIT_PART(duration, ' ', 1) AS INTEGER)) 
-      FROM netflix 
-      WHERE type = 'Movie' AND duration ~ '^[0-9]+ min$'
-  );
+select * from netflix
+ where type='Movie' AND DURATION=(SELECT MAX(DURATION) FROM NETFLIX)
 ```
 #### 6. Find Content Added in the Last 5 Years
 ```sql
