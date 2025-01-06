@@ -91,9 +91,10 @@ select * from netflix
 ```
 #### 6. Find Content Added in the Last 5 Years
 ```sql
-SELECT * 
-FROM netflix 
-WHERE TO_DATE(TRIM(date_added), 'Month dd, yyyy') >= NOW() - INTERVAL '5 years';
+SELECT *
+FROM netflix
+WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years';
+
 ```
 #### 7. Find All Movies/TV Shows by Director 'Rajiv Chilaka'
 ```sql
