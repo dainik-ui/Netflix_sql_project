@@ -77,7 +77,7 @@ WHERE release_year = 2020 AND type = 'Movie';
 #### 4. Find the Top 5 Countries with the Most Content on Netflix
 ```sql
 SELECT 
-    UNNEST(string_to_array(COALESCE(country, ''), ',')) AS country_new, 
+    UNNEST(string_to_array(country,',')) AS country_new, 
     COUNT(show_id) AS content_count 
 FROM netflix 
 GROUP BY country_new 
